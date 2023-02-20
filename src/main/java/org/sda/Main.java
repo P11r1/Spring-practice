@@ -1,11 +1,22 @@
 package org.sda;
 
+import org.sda.beans.MyBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  * @author Marko
  * @Date ${DATE}
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        MyBean myBean = (MyBean) applicationContext.getBean("myBean");
+        System.out.println(myBean.sayHello());
+
+        myBean.setName("Katrin");
+        System.out.println(myBean.sayHello());
     }
+
 }
